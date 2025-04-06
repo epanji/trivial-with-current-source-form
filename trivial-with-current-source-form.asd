@@ -15,7 +15,10 @@
   :components  ((:module     "code"
                  :serial     t
                  :components ((:file       "package")
+                              #+sbcl
                               (:file       "sbcl"        :if-feature :sbcl)
+                              #+clasp
                               (:file       "clasp"       :if-feature :clasp)
+                              #-(or clasp sbcl)
                               (:file       "unsupported" :if-feature (:not (:or :clasp :sbcl)))
                               (:file       "macro")))))
